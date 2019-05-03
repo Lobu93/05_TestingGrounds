@@ -4,6 +4,7 @@
 #include "Tile.h"
 #include "Engine/World.h"
 #include "DrawDebugHelpers.h"
+#include "ActorPool.h"
 
 // Sets default values
 ATile::ATile()
@@ -68,6 +69,13 @@ void ATile::BeginPlay()
 void ATile::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+}
+
+void ATile::SetPool(UActorPool* InPool)
+{
+	UE_LOG(LogTemp, Warning, TEXT("[%s] Setting Pool %s"), *(this->GetName()), *(InPool->GetName()));
+
+	Pool = InPool;
 }
 
 bool ATile::CanSpawnAtLocation(FVector Location, float Radius)
